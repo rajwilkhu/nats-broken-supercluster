@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  node1:
+    image: nats-streaming
+    volumes:
+    - ./config/dc1/config-server01.conf:/config.conf
+    - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4221:4222
+      - 8221:8222
+  node2:
+    image: nats-streaming
+    volumes:
+    - ./config/dc1/config-server02.conf:/config.conf
+    - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4222:4222
+      - 8222:8222
+  node3:
+    image: nats-streaming
+    volumes:
+    - ./config/dc1/config-server03.conf:/config.conf
+    - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4223:4222
+      - 8223:8222
+  node4:
+    image: nats-streaming
+    volumes:
+      - ./config/dc2/config-server04.conf:/config.conf
+      - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4224:4222
+      - 8224:8222
+  node5:
+    image: nats-streaming
+    volumes:
+      - ./config/dc2/config-server05.conf:/config.conf
+      - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4225:4222
+      - 8225:8222
+  node6:
+    image: nats-streaming
+    volumes:
+      - ./config/dc2/config-server06.conf:/config.conf
+      - ./config/gateways.conf:/gateways.conf
+    command: --config /config.conf
+    ports:
+      - 4226:4222
+      - 8226:8222
+networks:
+  default:
+    driver: bridge

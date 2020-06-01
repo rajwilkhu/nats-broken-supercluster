@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  node0:
+    image: nats-streaming
+    volumes:
+    - ./config/single-node/config-server01.conf:/config.conf
+    command: --config /config.conf
+    ports:
+      - 4222:4222
+      - 8222:8222
+networks:
+  default:
+    driver: bridge
